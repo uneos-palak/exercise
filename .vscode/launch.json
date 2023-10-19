@@ -1,0 +1,40 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend (existing tilt session)",
+      "type": "python",
+      "request": "attach",
+      "justMyCode": false,
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/services/backend",
+          "remoteRoot": "/app"
+        },
+        {
+          "localRoot": "/home/vscode/.local/lib/python3.11/site-packages",
+          "remoteRoot": "/usr/local/lib/python3.11/site-packages"
+        }
+      ],
+      "connect": {
+        "host": "localhost",
+        "port": 5678
+      }
+    },
+    {
+      "name": "Frontend (existing tilt session)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8130",
+      "webRoot": "${workspaceFolder}/services/frontend",
+      "breakOnLoad": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${webRoot}/*"
+      },
+      "skipFiles": ["${workspaceFolder}/node_modules/**/*"]
+    }
+  ]
+}

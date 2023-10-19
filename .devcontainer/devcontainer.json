@@ -1,0 +1,48 @@
+{
+    "name": "excers",
+    "image": "ghcr.io/uneos/devcontainer",
+    // Use this environment variable if you need to bind mount your local source code into a new container.
+    "remoteEnv": {
+        "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/.config/gh/hosts.yml,target=/home/vscode/.config/gh/hosts.yml,type=bind,consistency=cached"
+    ],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "portsAttributes": {
+        "8050": {
+            "label": "excers backend port",
+            "onAutoForward": "silent"
+        },
+        "8130": {
+            "label": "excers frontend port",
+            "onAutoForward": "openBrowser"
+        },
+        "6007": {
+            "label": "Storybook",
+            "onAutoForward": "openBrowser"
+        },
+        "10350": {
+            "label": "tilt port",
+            "onAutoForward": "openBrowser"
+        },
+        "8080": {
+            "label": "Dapr Dashboard",
+            "onAutoForward": "silent"
+        },
+        "4242": {
+            "label": "Unleash",
+            "onAutoForward": "silent"
+        },
+        "5432": {
+            "label": "Postgres DB",
+            "onAutoForward": "silent"
+        },
+        "5678": {
+            "label": "VS Code Backend Debugger",
+            "onAutoForward": "ignore"
+        }
+    }
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    // "remoteUser": "root"
+}

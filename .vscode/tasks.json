@@ -1,0 +1,94 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "tilt - up with stream",
+      "command": "python",
+      "args": [
+        "-m",
+        "webbrowser",
+        "http://localhost:10350",
+        "&",
+        "tilt",
+        "up",
+        "--stream=true"
+      ],
+      "options": {
+        "shell": {
+          "executable": "/bin/zsh",
+          "args": ["-c"]
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "tilt - down",
+      "command": "tilt",
+      "args": ["down"],
+      "options": {
+        "shell": {
+          "executable": "/bin/zsh",
+          "args": ["-c"]
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "tilt - up",
+      "command": "python",
+      "args": ["-m", "webbrowser", "http://localhost:10350", "&", "tilt", "up"],
+      "options": {
+        "shell": {
+          "executable": "/bin/zsh",
+          "args": ["-c"]
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "precommit - run all",
+      "command": "pre-commit",
+      "args": ["run", "--all-files"],
+      "options": {
+        "shell": {
+          "executable": "/bin/zsh",
+          "args": ["-c"]
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "precommit - run",
+      "command": "pre-commit",
+      "args": ["run"],
+      "options": {
+        "shell": {
+          "executable": "/bin/zsh",
+          "args": ["-c"]
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "storybook",
+      "command": "npm",
+      "args": ["run", "storybook"],
+      "options": {
+        "cwd": "${workspaceFolder}/services/frontend",
+        "shell": {
+          "executable": "/bin/zsh",
+          "args": ["-c"]
+        }
+      },
+      "problemMatcher": []
+    }
+  ]
+}
