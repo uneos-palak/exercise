@@ -21,5 +21,3 @@ echo "@uneos:registry=https://npm.pkg.github.com
 # should be the same as in .pre-commit-config.yaml
 cd services/frontend
 npm install
-
-
