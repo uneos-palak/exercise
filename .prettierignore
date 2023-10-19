@@ -1,0 +1,3 @@
+openapi_excers.yaml
+services/frontend/src/api/**/*.ts
+**/templates/

@@ -1,0 +1,11 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v0.3.9
+_src_path: git@github.com:uneos/template.git
+backend_port: 8050
+frontend_port: 8130
+has_frontend: true
+project_name: excercise1
+project_name_full: service_extern_excercise1
+project_name_short: excers
+project_scope: extern
+project_type: service

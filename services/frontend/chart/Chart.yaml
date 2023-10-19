@@ -1,0 +1,4 @@
+apiVersion: v2
+name: excers-fe
+description: service_extern_excercise1 Frontend
+version: 0.0.0

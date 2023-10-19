@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "excers"
+version = "0.0.0"
+authors = [
+    {name = "Pablo Prietz", email = "pablo.prietz@uneos.io"},
+]
+description = "[service extern] excercise1"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "meauth @ git+ssh://git@github.com/uneos/module_extern_authentication.git",
+    "meflag @ git+ssh://git@github.com/uneos/module_extern_feature_flags.git",
+    "melogs @ git+ssh://git@github.com/uneos/module_extern_logging.git",
+    "fastapi[all]==0.95.1",
+    "uvicorn==0.20.0",
+    "SQLAlchemy==2.0.12",
+    "psycopg2-binary==2.9.6",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]  # package names should match these glob patterns (["*"] by default)
+namespaces = false
+
+[project.scripts]
+openapi_excers = "excers.cli:generate_openapi_schema"
+
+[project.entry-points."meflag"]
+feature_flags = "excers.feature_flags"
+
+[project.optional-dependencies]
+tests = [
+  "bump2version",
+  "pytest",
+  "pyright==1.1.311",
+]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "services/backend/tests"
+]
+cache_dir = "services/backend/.pytest_cache"
+
+[tool.pyright]
+typeCheckingMode = "strict"
+include = ["src", "tests"]
+exclude = [
+    "**/__pycache__",
+]
+
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+pythonVersion = "3.11"
+pythonPlatform = "Linux"

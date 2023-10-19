@@ -1,0 +1,52 @@
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+jobs:
+  call-bump:
+    if: github.event.pull_request.merged == true
+    uses: uneos/workflows/.github/workflows/bump-version.yml@main
+    secrets: inherit
+  call-build-be:
+    needs: call-bump
+    if: github.event.pull_request.merged == true && needs.call-bump.outputs.newVersion == 'true'
+    uses: uneos/workflows/.github/workflows/build-to-ghcr.yml@main
+    with:
+      ref: ${{ needs.call-bump.outputs.version }}
+      name: excers-be
+      dockerpath: ./services/backend
+      target-ssh-git-config: config-files
+    secrets: inherit
+  call-package-be:
+    needs: call-bump
+    if: github.event.pull_request.merged == true && needs.call-bump.outputs.newVersion == 'true'
+    uses: uneos/workflows/.github/workflows/helm-to-ghcr.yml@main
+    with:
+      ref: ${{ needs.call-bump.outputs.version }}
+      name: excers-be
+      path: ./services/backend/chart
+    secrets: inherit
+  
+  call-build-fe:
+    needs: call-bump
+    if: github.event.pull_request.merged == true && needs.call-bump.outputs.newVersion == 'true'
+    uses: uneos/workflows/.github/workflows/build-to-ghcr.yml@main
+    with:
+      ref: ${{ needs.call-bump.outputs.version }}
+      name: excers-fe
+      dockerpath: ./services/frontend
+    secrets: inherit
+  call-package-fe:
+    needs: call-bump
+    if: github.event.pull_request.merged == true && needs.call-bump.outputs.newVersion == 'true'
+    uses: uneos/workflows/.github/workflows/helm-to-ghcr.yml@main
+    with:
+      ref: ${{ needs.call-bump.outputs.version }}
+      name: excers-fe
+      path: ./services/frontend/chart
+    secrets: inherit
+  

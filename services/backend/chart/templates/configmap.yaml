@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-cfg
+  namespace: {{ .Values.namespace }}
+data:
+  STAGE: {{ .Values.namespace }}
+  FRONTEND_ORIGIN: http://localhost:8130
+  PGHOST: sepost

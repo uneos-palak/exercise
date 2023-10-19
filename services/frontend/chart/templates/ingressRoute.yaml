@@ -1,0 +1,18 @@
+{{ if .Values.ingressRoute }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  entryPoints:
+    - https
+  routes:
+    - match: Host(`{{ .Chart.Name }}.{{ .Values.namespace }}.uneos.app`)
+      kind: Rule
+      middlewares:
+        - name: forwardauth@file
+      services:
+        - name: {{ .Chart.Name }}
+          port: 8130
+{{ end }}

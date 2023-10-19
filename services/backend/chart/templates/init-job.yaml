@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Chart.Name }}-init-job
+  namespace: {{ .Values.namespace }}
+spec:
+  template:
+    spec:
+      imagePullSecrets:
+      - name: docker-cfg
+      initContainers:
+      - name: wait
+        image: ghcr.io/groundnuty/k8s-wait-for:v2.0
+        imagePullPolicy: IfNotPresent
+        args:
+          - "job"
+          - "meflag-cfg-job"
+      containers:
+      - name: {{ .Chart.Name }}-init-job
+        image: ghcr.io/uneos/sepost-init-db
+        envFrom:
+        - configMapRef:
+            name: {{ .Chart.Name }}-cfg
+        - secretRef:
+            name: {{ .Chart.Name }}-init-secrets
+      restartPolicy: Never

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-cfg
+  namespace: {{ .Values.namespace }}
+data:
+  VITE_STAGE: {{ .Values.namespace }}
+  VITE_OPENAPI_BASE: http://localhost:8050

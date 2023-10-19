@@ -1,0 +1,14 @@
+name: pre-commit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  pre-commit:
+    uses: uneos/workflows/.github/workflows/call-pre-commit.yml@main
+    secrets: inherit
+    with:
+      install-via-pip: ./services/backend[tests]
+      install-via-npm: ./services/frontend

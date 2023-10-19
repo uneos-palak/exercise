@@ -1,0 +1,2 @@
+{{- $_ := required "Database admin password db_pass is required" .Values.db_pass }}
+{{- $_ := required "Database backend password backend_pass is required" .Values.backend_pass }}

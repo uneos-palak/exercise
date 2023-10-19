@@ -1,0 +1,81 @@
+{
+  "name": "@uneos/service_extern_excercise1",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/service_extern_excercise1.umd.cjs",
+  "module": "./dist/service_extern_excercise1.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/style.css",
+  "exports": {
+    ".": {
+      "import": "./dist/service_extern_excercise1.js",
+      "require": "./dist/service_extern_excercise1.umd.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
+  "scripts": {
+    "dev": "vite --host",
+    "build": "run-p type-check build-only",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit",
+    "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@elastic/apm-rum-vue": "^2.1.2",
+    "@tanstack/vue-query": "^4.35.6",
+    "@unleash/proxy-client-vue": "0.0.8",
+    "@vueuse/core": "^10.0.2",
+    "axios": "^1.4.0",
+    "classnames": "^2.3.2",
+    "flowbite": "^1.6.5",
+    "form-data": "^4.0.0",
+    "pinia": "^2.0.32",
+    "vue": "^3.2.47",
+    "@uneos/vue_components_standard": "latest",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.24",
+    "@storybook/addon-interactions": "^7.0.24",
+    "@storybook/addon-links": "^7.0.24",
+    "@storybook/blocks": "^7.0.24",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "@storybook/vue3": "^7.0.24",
+    "@storybook/vue3-vite": "^7.0.24",
+    "@types/node": "^18.14.2",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/tsconfig": "^0.1.3",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
+    "eslint-plugin-vue": "^9.11.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.22",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": ">=7.0.24 <7.1",
+    "tailwindcss": "^3.3.1",
+    "typescript": "~4.8.4",
+    "vite": "^4.1.4",
+    "vite-plugin-dts": "^3.5.1",
+    "vite-svg-loader": "^4.0.0",
+    "vue-tsc": "^1.2.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: {{ .Chart.Name }}
+        dapr.io/app-port: "8050"
+    spec:
+      initContainers:
+      - name: wait
+        image: ghcr.io/groundnuty/k8s-wait-for:v2.0
+        imagePullPolicy: IfNotPresent
+        args:
+          - "job"
+          - "{{ .Chart.Name }}-init-job"
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8050
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: {{ .Chart.Name }}-cfg
+            - secretRef:
+                name: {{ .Chart.Name }}-secrets
+            - secretRef:
+                name: apm-secrets
+            - secretRef:
+                name: oidc-secrets
+            - secretRef:
+                name: meflag-secrets

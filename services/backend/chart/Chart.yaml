@@ -1,0 +1,4 @@
+apiVersion: v2
+name: excers-be
+description: service_extern_excercise1 Backend
+version: 0.0.0

@@ -1,0 +1,15 @@
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - edited
+      - reopened
+      - labeled
+      - unlabeled
+    branches:
+      - main
+jobs:
+  call-check:
+    uses: uneos/workflows/.github/workflows/check-bump-label.yml@main

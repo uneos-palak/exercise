@@ -1,0 +1,21 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "isolatedModules": true,
+    // DEBT: Ignores following deprecation warning:
+    // > Option 'importsNotUsedAsValues' is deprecated and will stop functioning in
+    // > TypeScript 5.5. Specify compilerOption '"ignoreDeprecations": "5.0"' to silence
+    // > this error. Use 'verbatimModuleSyntax' instead.
+    // The option is set in `services/frontend/node_modules/@vue/tsconfig/tsconfig.json`
+    // and therefore not ours to fix. **Look into updating @vue/tsconfig.**
+    "ignoreDeprecations": "5.0"
+  },
+  "include": ["env.d.ts", "src/**/*.ts", "src/**/*.vue"],
+  "exclude": ["node_modules", "**/node_modules"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
