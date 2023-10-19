@@ -1,0 +1,57 @@
+{
+  "python.analysis.inlayHints.pytestParameters": true,
+  "python.testing.pytestArgs": ["-c", "services/backend/pyproject.toml"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "python.analysis.importFormat": "relative",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      "source.fixAll": true
+    }
+  },
+  "isort.args": ["--profile", "black"],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "debug.console.wordWrap": false,
+  "cSpell.enableFiletypes": ["dockerfile", "github-actions-workflow"],
+  "taskExplorer.exclude": [
+    "**/.vscode-test/**",
+    "**/Assets/**",
+    "**/bin/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/doc/**",
+    "**/example/**",
+    "**/examples/**",
+    "**/ext/**",
+    "**/obj/**",
+    "**/out/**",
+    "**/output/**",
+    "**/packages/**",
+    "**/release/**",
+    "**/releases/**",
+    "**/samples/**",
+    "**/sdks/**",
+    "**/static/**",
+    "**/target/**",
+    "**/test/**",
+    "**/third_party/**",
+    "**/vendor/**",
+    "**/work/**",
+    "**/meauth/**",
+    "**/components_standard/**"
+  ],
+  "taskExplorer.clickAction": "Execute",
+  "taskExplorer.enableSideBar": true,
+  "taskExplorer.enableExplorerView": false,
+  "taskExplorer.groupMaxLevel": 2,
+  "taskExplorer.showHiddenWsTasks": false,
+  "taskExplorer.showLastTasks": false,
+  "[tiltfile]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
+}
